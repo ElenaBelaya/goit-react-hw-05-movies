@@ -36,7 +36,7 @@ const MovieDetails = () => {
   };
 
   const { poster_path, title, release_date, overview, vote_average } = movie;
-  console.log(movie);
+
   return (
     <>
       {!movie && <Loader />}
