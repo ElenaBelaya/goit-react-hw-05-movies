@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import * as API from './services/app';
-import Loader from 'components/Loader/Loader';
+import * as API from '../services/app';
+import Loader from '../components/Loader/Loader';
 
 const Cast = () => {
   const [loading, setLoading] = useState(false);

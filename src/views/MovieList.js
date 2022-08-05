@@ -1,8 +1,6 @@
 import { Outlet, Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState, Suspense } from 'react';
-import Loader from 'components/Loader/Loader';
-import PropTypes from 'prop-types';
-
+import Loader from '../components/Loader/Loader';
 import * as API from '../services/app';
 
 function Movies() {
@@ -40,7 +38,11 @@ function Movies() {
   return (
     <main>
       <form onSubmit={handleFilmName}>
-        <input type="text" name="query" placeholder="Search movies" />
+        <input
+          type="text"
+          name="query"
+          placeholder={query ? query : 'Search movies'}
+        />
         <button type="submit">Search</button>
       </form>
 
@@ -69,15 +71,3 @@ function Movies() {
   );
 }
 export default Movies;
-
-Movies.propTypes = {
-  movies: PropTypes.array,
-  loading: PropTypes.bool,
-  searchParams: PropTypes.string,
-  location: PropTypes.object,
-  query: PropTypes.string,
-  movie: PropTypes.object,
-  id: PropTypes.string,
-  title: PropTypes.string,
-  handleFilmName: PropTypes.func,
-};

@@ -5,12 +5,11 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import * as API from '../services/app';
-import Loader from 'components/Loader/Loader';
-import PropTypes from 'prop-types';
+import Loader from '../components/Loader/Loader';
 import { BiCaretLeft } from 'react-icons/bi';
-import { FilmCard, Description, Button } from './Movie.Details.styled';
+import { FilmCard, Description, Button } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState('');
@@ -84,22 +83,17 @@ const MovieDetails = () => {
         </li>
       </ul>
       <hr />
-      <Outlet />
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
   );
 };
 
 export default MovieDetails;
-
-MovieDetails.propTypes = {
-  movies: PropTypes.array,
-  movie: PropTypes.object,
-  location: PropTypes.object,
-  poster_path: PropTypes.string,
-  release_date: PropTypes.string,
-  overview: PropTypes.string,
-  title: PropTypes.string,
-  fetchMoviesById: PropTypes.func,
-  moviesId: PropTypes.string,
-  onGoBack: PropTypes.func,
-};

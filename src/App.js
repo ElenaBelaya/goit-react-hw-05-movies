@@ -1,19 +1,19 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
+import Layout from 'components/Layout/Layout';
 
-const createViews = pathName => {
+const createViews = componentName => {
   return lazy(() => {
-    return import(`${pathName}`);
+    return import(`./views/${componentName}`);
   });
 };
 
-const Layout = createViews('./Layout/Layout');
-const HomeViews = createViews('./views/HomeViews');
-const Movies = createViews('./movieList/MovieList');
-const MovieDetails = createViews('./views/MovieDetails');
-const Cast = createViews('./Cast');
-const Reviews = createViews('./Reviews');
-const NotFoundView = createViews('./views/NotFoundView');
+const HomeViews = createViews('HomeViews');
+const Movies = createViews('MovieList');
+const MovieDetails = createViews('MovieDetails');
+const Cast = createViews('Cast');
+const Reviews = createViews('Reviews');
+const NotFoundView = createViews('NotFoundView');
 
 const App = () => {
   return (

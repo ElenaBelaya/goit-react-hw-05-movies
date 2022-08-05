@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import useFetchMovies from '../hooks/useFetchMovies';
-import PropTypes from 'prop-types';
 
 const HomeViews = () => {
   const { movies } = useFetchMovies();
@@ -22,11 +21,3 @@ const HomeViews = () => {
   );
 };
 export default HomeViews;
-
-HomeViews.propTypes = {
-  movies: PropTypes.array,
-  movie: PropTypes.object,
-  id: PropTypes.string,
-  title: PropTypes.string,
-  useFetchMovies: PropTypes.func,
-};
